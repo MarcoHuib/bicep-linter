@@ -50,7 +50,7 @@ The default language is **Dutch**. Want to change the language?
 1. Open `src/extension.ts`.  
 2. Modify the language setting:  
    ```typescript  
-   setLanguage('en'); // Change 'nl' to 'en' for English  
+   let language: Language = 'nl'; // Change 'nl' to 'en' for English  
    ```  
 
 ## 🧪 Unit Tests  

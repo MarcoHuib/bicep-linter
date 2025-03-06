@@ -3,6 +3,10 @@
   "displayName": "Bicep Hungarian Notation Linter",
   "description": "Linter voor Bicep met Hongaarse notatie conventies",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarcoHuib/bicep-linter.git"
+  },
   "engines": {
     "vscode": "^1.98.0"
   },
