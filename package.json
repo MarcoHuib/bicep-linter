@@ -2,7 +2,7 @@
   "name": "bicep-hungarian-notation-linter",
   "displayName": "Bicep Hungarian Notation Linter",
   "description": "Linter voor Bicep met Hongaarse notatie conventies",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/MarcoHuib/bicep-linter.git"

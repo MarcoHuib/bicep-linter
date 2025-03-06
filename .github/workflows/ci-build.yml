@@ -27,5 +27,14 @@ jobs:
       - name: Build extension
         run: npm run compile
 
+      - name: Install dependencies for headless testing
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable dbus-x11
+          Xvfb -ac :99 -screen 0 1280x1024x16 &
+          export DISPLAY=:99
+      
       - name: Run tests
         run: npm test
+        env:
+          DISPLAY: ":99"
