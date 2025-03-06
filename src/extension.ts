@@ -22,9 +22,10 @@ const MESSAGES: Record<Language, Messages> = {
 };
 
 let language: Language = 'nl';
+let diagnostics: vscode.DiagnosticCollection;
 
 export function activate(context: vscode.ExtensionContext): void {
-  const diagnostics: vscode.DiagnosticCollection = vscode.languages.createDiagnosticCollection('bicepHungarianLinter');
+  diagnostics = vscode.languages.createDiagnosticCollection('bicepHungarianLinter');
   context.subscriptions.push(diagnostics);
 
   vscode.workspace.textDocuments.forEach(lintDocument);
@@ -42,6 +43,8 @@ export function lintDocument(doc: vscode.TextDocument): void {
   if (doc.languageId !== 'bicep') {
     return;
   }
+
+  diagnostics.delete(doc.uri); 
 
   const diagList: vscode.Diagnostic[] = [];
   let currentSectionOrder = 0;
@@ -66,7 +69,7 @@ export function lintDocument(doc: vscode.TextDocument): void {
     checkTypeConstraint(tokens, name, line.text, i, diagList);
   }
 
-  vscode.languages.createDiagnosticCollection('bicepHungarianLinter').set(doc.uri, diagList);
+  diagnostics.set(doc.uri, diagList);
 }
 
 export function cleanLine(text: string): string {
