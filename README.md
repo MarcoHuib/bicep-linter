@@ -1,71 +1,94 @@
-# bicep-hungarian-notation-linter README
+# Bicep Hungarian Linter  
 
-This is the README for your extension "bicep-hungarian-notation-linter". After writing up a brief description, we recommend including the following sections.
+A **VS Code Extension** that performs linting on **Bicep files** and warns about:  
 
-## Features
+- Incorrect **section order**  
+- **Naming issues** (missing prefixes)  
+- **Untyped objects and arrays**  
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## 📦 Installation  
 
-For example if there is an image subfolder under your extension project workspace:
+### 1. Manual Installation  
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Clone this repository:  
+   ```sh  
+   git clone https://github.com/MarcoHuib/bicep-hungarian-linter.git  
+   ```  
+2. Open the folder in VS Code.  
+3. Install dependencies:  
+   ```sh  
+   npm install  
+   ```  
+4. Build the extension:  
+   ```sh  
+   npm run build  
+   ```  
+5. Package the extension for installation:  
+   ```sh  
+   npx vsce package  
+   ```  
+6. Install the packaged `.vsix` file:  
+   ```sh  
+   code --install-extension <your-extension>.vsix  
+   ```  
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### 2. Install via VS Code Marketplace *(Coming Soon)*  
 
-## Requirements
+This extension is not yet available on the VS Code Marketplace but will be in the future. In the meantime, you can install it manually using the steps above.  
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## 🚀 Features  
 
-## Extension Settings
+- **Linting for Bicep files** as they are opened or modified.  
+- **Clear error messages** with references to the exact line.  
+- **Support for multiple languages** *(Dutch and English)*.  
+- **Unit-testable architecture** for easy maintenance.  
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## 🛠 Configuration  
 
-For example:
+The default language is **Dutch**. Want to change the language?  
 
-This extension contributes the following settings:
+1. Open `src/extension.ts`.  
+2. Modify the language setting:  
+   ```typescript  
+   setLanguage('en'); // Change 'nl' to 'en' for English  
+   ```  
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 🧪 Unit Tests  
 
-## Known Issues
+Unit tests are included in the `src/test/extension.test.ts` file and use **Mocha** and **Assert** for validation. To run the tests, execute:  
+   ```sh  
+   npm test  
+   ```  
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+The test suite includes:  
+- Detection of **incorrect section order**  
+- Detection of **missing prefixes**  
+- Detection of **untyped objects**  
+- Ensuring no errors occur for correctly formatted code  
 
-## Release Notes
+## 📜 Contributing  
 
-Users appreciate release notes as you update your extension.
+Want to contribute? Great!  
 
-### 1.0.0
+1. Fork this repository.  
+2. Create a feature branch:  
+   ```sh  
+   git checkout -b my-feature  
+   ```  
+3. Commit changes:  
+   ```sh  
+   git commit -m "My update"  
+   ```  
+4. Push to GitHub:  
+   ```sh  
+   git push origin my-feature  
+   ```  
+5. Open a **Pull Request** 🚀  
 
-Initial release of ...
+## 📝 License  
 
-### 1.0.1
+This extension is licensed under the **MIT License**. See `LICENSE` for details.  
 
-Fixed issue #.
+---  
 
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+✨ Happy linting your Bicep files! 🚀  

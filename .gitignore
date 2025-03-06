@@ -43,3 +43,4 @@ yarn.lock
 *.js
 .vscode
 out
+.vscode-test
