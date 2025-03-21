@@ -1,4 +1,4 @@
-# Bicep Hungarian Linter  
+# Bicep Linter  
 
 A **VS Code Extension** that performs linting on **Bicep files** and warns about:  
 
