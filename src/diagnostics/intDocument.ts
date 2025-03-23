@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
-import { SectionType } from '../types/sectionType';
 import { extractSectionType, extractName, createDiagnostic, isCommentLine } from './diagnosticHelpers';
 import { checkPrefix, checkAllowedNameChars } from './naming';
 import { checkSectionOrder } from './order';
 import { config } from '../config/configuration';
 
-function lintDocument(document: vscode.TextDocument): vscode.Diagnostic[] {
+
+export function lintDocument(document: vscode.TextDocument): vscode.Diagnostic[] {
     if (document.languageId !== 'bicep') { return []; }
     
     const text = document.getText();
@@ -50,5 +50,3 @@ function lintDocument(document: vscode.TextDocument): vscode.Diagnostic[] {
 
     return diagnostics;
 }
-
-export {lintDocument};

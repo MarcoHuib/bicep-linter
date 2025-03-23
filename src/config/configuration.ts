@@ -7,10 +7,12 @@ import { lintDocument } from '../diagnostics/intDocument';
 
 let config: LinterConfig;
 
+const configFile = '**/bicep-linter.config.json';
+
 function initConfiguration(context: vscode.ExtensionContext, diagnosticCollection: vscode.DiagnosticCollection) {
 
     const rootPath = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0]?.uri?.path : '';
-    const configFilePath = path.join(rootPath, 'bicep-linter.config.json');
+    const configFilePath = path.join(rootPath, '**', configFile);
 
     function loadConfig() {
         if (fs.existsSync(configFilePath)) {
@@ -22,7 +24,7 @@ function initConfiguration(context: vscode.ExtensionContext, diagnosticCollectio
 
     loadConfig();
 
-    const watcher = vscode.workspace.createFileSystemWatcher('**/bicep-linter.config.json');
+    const watcher = vscode.workspace.createFileSystemWatcher(configFilePath);
     watcher.onDidChange(loadConfig);
     watcher.onDidCreate(loadConfig);
     watcher.onDidDelete(loadConfig);

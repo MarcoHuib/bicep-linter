@@ -33,4 +33,4 @@ function checkAllowedNameChars(name: string): string | null {
 export {
     checkPrefix,
     checkAllowedNameChars
-}
+};
