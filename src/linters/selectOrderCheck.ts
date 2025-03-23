@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { DocumentLintRule } from './interfaces/documentRuleOperator';
+import { DocumentRuleOperator } from './interfaces/documentRuleOperator';
 import { config } from '../config/configuration';
 import { CURRENT_LANGUAGE } from '../constants/CURRENT_LANGUAGE';
 import { MESSAGES } from '../constants/MESSAGES';
@@ -9,7 +9,7 @@ import { SECTION_ORDER_MAP } from '../mappers/SECTION_ORDER_MAP';
 import { LintIssue } from '../types/lintIssue';
 import { SectionType } from '../types/sectionType';
 
-export class SectionOrderCheck implements DocumentLintRule {
+export class SectionOrderCheck implements DocumentRuleOperator {
     public enabled(): boolean {
         return config.checkSectionOrder;
     }

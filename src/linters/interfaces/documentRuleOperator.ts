@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-export interface DocumentLintRule {
+export interface DocumentRuleOperator {
     enabled(): boolean;
     run(lines: string[]): vscode.Diagnostic[];
 }

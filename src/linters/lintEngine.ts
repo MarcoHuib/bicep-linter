@@ -4,11 +4,11 @@ import { AllowedCharsCheck } from './allowCharsCheck';
 import { LintRuleOperator } from './interfaces/lintRuleOperator';
 import { PrefixCheck } from './prefixCheck';
 import { SectionOrderCheck } from './selectOrderCheck';
-import { DocumentLintRule } from './interfaces/documentRuleOperator';
+import { DocumentRuleOperator } from './interfaces/documentRuleOperator';
 
 export class LintEngine {
     private lineOperators: LintRuleOperator[] = [ new PrefixCheck(), new AllowedCharsCheck() ];
-    private documentOperators: DocumentLintRule[] = [ new SectionOrderCheck() ];
+    private documentOperators: DocumentRuleOperator[] = [ new SectionOrderCheck() ];
 
     public lintDocument(document: vscode.TextDocument): vscode.Diagnostic[] {
         if (document.languageId !== 'bicep') return [];
