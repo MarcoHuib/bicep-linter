@@ -1,3 +1,3 @@
-import { Language } from "../types/Language";
+import { Language } from "../types/language";
 
 export const CURRENT_LANGUAGE: Language = Language.NL;

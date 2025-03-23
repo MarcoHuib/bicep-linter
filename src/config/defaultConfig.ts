@@ -1,4 +1,4 @@
-import { Language } from "../types/Language";
+import { Language } from "../types/language";
 import { LinterConfig } from "./linterConfig";
 
 export const defaultConfig: LinterConfig = {

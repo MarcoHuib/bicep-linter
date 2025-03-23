@@ -6,7 +6,7 @@ function activateExtension(context: vscode.ExtensionContext): void {
     const diagnosticCollection = vscode.languages.createDiagnosticCollection('bicep-linter');
     context.subscriptions.push(diagnosticCollection);
 
-    initConfiguration(context, diagnosticCollection);
+    initConfiguration(context);
 
     const engine = new LintEngine();
 

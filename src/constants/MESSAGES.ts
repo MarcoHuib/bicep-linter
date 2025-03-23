@@ -1,4 +1,4 @@
-import { Language } from "../types/Language";
+import { Language } from "../types/language";
 import { LintMessages } from "../types/lintMessages";
 
 export const MESSAGES: Record<Language, LintMessages> = {
