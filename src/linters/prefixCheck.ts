@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
-import { config } from "../config/configuration";
+import { config } from "../config/initConfiguration";
 import { createDiagnostic, formatMessage } from "../diagnostics/diagnosticHelpers";
 import { SectionType } from "../types/sectionType";
 import { LintRuleOperator } from "./interfaces/lintRuleOperator";
-import { TYPE_LABELS } from '../constants/TYPE_LABELS';
-import { CURRENT_LANGUAGE } from '../constants/CURRENT_LANGUAGE';
-import { MESSAGES } from '../constants/MESSAGES';
+import { typeLabels } from '../constants/typeLabels';
+import { currentLanguage } from '../constants/currentLanguage';
+import { messages } from '../constants/messages';
 
 export class PrefixCheck implements LintRuleOperator {
     appliesTo(section: SectionType): boolean {
@@ -25,8 +25,8 @@ export class PrefixCheck implements LintRuleOperator {
 
     private checkPrefix(name: string, requiredPrefix: string, sectionType: SectionType): string | null {
         if (!name.startsWith(requiredPrefix)) {
-            const typeLabel = TYPE_LABELS[CURRENT_LANGUAGE][sectionType];
-            return formatMessage(MESSAGES[CURRENT_LANGUAGE].prefixMissing, {
+            const typeLabel = typeLabels[currentLanguage][sectionType];
+            return formatMessage(messages[currentLanguage].prefixMissing, {
                 type: typeLabel,
                 name: name,
                 prefix: requiredPrefix

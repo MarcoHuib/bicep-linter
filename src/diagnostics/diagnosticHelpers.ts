@@ -1,13 +1,14 @@
 import * as vscode from 'vscode';
-import { SECTION_KEYWORDS } from '../mappers/SECTION_KEYWORDS';
+import { selectionKeywordsMap } from '../mappers/selectionKeywordsMap';
 import { SectionType } from '../types/sectionType';
+import { diagnosticName } from '../constants/diagnosticName';
 
 // Helper functions
 function createDiagnostic(line: number, startChar: number, endChar: number, message: string, 
     severity: vscode.DiagnosticSeverity = vscode.DiagnosticSeverity.Warning): vscode.Diagnostic {
     const range = new vscode.Range(line, startChar, line, endChar);
     const diagnostic = new vscode.Diagnostic(range, message, severity);
-    diagnostic.source = 'bicep-linter';
+    diagnostic.source = diagnosticName;
     return diagnostic;
 }
 
@@ -33,7 +34,7 @@ function extractName(line: string): string | null {
 
 function extractSectionType(line: string): SectionType | null {
     const firstWord = line.trim().split(/\s+/, 1)[0];
-    return SECTION_KEYWORDS.has(firstWord) ? firstWord as SectionType : null;
+    return selectionKeywordsMap.has(firstWord) ? firstWord as SectionType : null;
 }
 
 function formatMessage(template: string, values: Record<string, string>): string {

@@ -7,11 +7,16 @@ import { SectionOrderCheck } from './selectOrderCheck';
 import { DocumentRuleOperator } from './interfaces/documentRuleOperator';
 
 export class LintEngine {
-    private lineOperators: LintRuleOperator[] = [ new PrefixCheck(), new AllowedCharsCheck() ];
-    private documentOperators: DocumentRuleOperator[] = [ new SectionOrderCheck() ];
+
+    public constructor(
+        public languageType: string,
+        private lineOperators: LintRuleOperator[] = [ new PrefixCheck(), new AllowedCharsCheck() ],
+        private documentOperators: DocumentRuleOperator[] = [ new SectionOrderCheck() ]
+    ) {}
+
 
     public lintDocument(document: vscode.TextDocument): vscode.Diagnostic[] {
-        if (document.languageId !== 'bicep') return [];
+        if (document.languageId !== this.languageType) return [];
 
         const text = document.getText();
         const lines = text.split(/\r?\n/);

@@ -1,7 +1,7 @@
 import { Language } from "../types/language";
 import { LintMessages } from "../types/lintMessages";
 
-export const MESSAGES: Record<Language, LintMessages> = {
+export const messages: Record<Language, LintMessages> = {
     [Language.NL]: {
         prefixMissing: "De naam van {type} '{name}' moet beginnen met '{prefix}'.",
         invalidCharacter: "De naam '{name}' bevat ongeldig teken: '{char}'.",

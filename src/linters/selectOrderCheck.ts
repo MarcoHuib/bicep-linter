@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
 import { DocumentRuleOperator } from './interfaces/documentRuleOperator';
-import { config } from '../config/configuration';
-import { CURRENT_LANGUAGE } from '../constants/CURRENT_LANGUAGE';
-import { MESSAGES } from '../constants/MESSAGES';
-import { TYPE_LABELS } from '../constants/TYPE_LABELS';
+import { config } from '../config/initConfiguration';
+import { currentLanguage } from '../constants/currentLanguage';
+import { messages } from '../constants/messages';
+import { typeLabels } from '../constants/typeLabels';
 import { cleanLine, extractSectionType, formatMessage } from '../diagnostics/diagnosticHelpers';
-import { SECTION_ORDER_MAP } from '../mappers/SECTION_ORDER_MAP';
+import { selectionOrderMap } from '../mappers/selectionOrderMap';
 import { LintIssue } from '../types/lintIssue';
 import { SectionType } from '../types/sectionType';
 
@@ -42,11 +42,11 @@ export class SectionOrderCheck implements DocumentRuleOperator {
             }
             const sectionType = extractSectionType(line);
             if (sectionType) {
-                const order = SECTION_ORDER_MAP[sectionType];
+                const order = selectionOrderMap[sectionType];
                 if (order < lastOrder && lastType !== null) {
-                    const message = formatMessage(MESSAGES[CURRENT_LANGUAGE].sectionOrder, {
-                        current: TYPE_LABELS[CURRENT_LANGUAGE][sectionType],
-                        previous: TYPE_LABELS[CURRENT_LANGUAGE][lastType]
+                    const message = formatMessage(messages[currentLanguage].sectionOrder, {
+                        current: typeLabels[currentLanguage][sectionType],
+                        previous: typeLabels[currentLanguage][lastType]
                     });
                     issues.push({ line: i, message: message });
                 } else if (order >= lastOrder) {

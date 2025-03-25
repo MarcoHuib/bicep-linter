@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
-import { config } from '../config/configuration';
+import { config } from '../config/initConfiguration';
 import { createDiagnostic, formatMessage } from '../diagnostics/diagnosticHelpers';
 import { SectionType } from '../types/sectionType';
 import { LintRuleOperator } from './interfaces/lintRuleOperator';
-import { CURRENT_LANGUAGE } from '../constants/CURRENT_LANGUAGE';
-import { MESSAGES } from '../constants/MESSAGES';
-import { INVALID_NAME_CHARS } from '../mappers/INVALID_NAME_CHARS';
+import { currentLanguage } from '../constants/currentLanguage';
+import { messages } from '../constants/messages';
+import { invalidNameCharsMap } from '../mappers/invalidNameCharsMap';
 
 export class AllowedCharsCheck implements LintRuleOperator {
     appliesTo(_section: SectionType): boolean {
@@ -24,8 +24,8 @@ export class AllowedCharsCheck implements LintRuleOperator {
 
     private checkAllowedNameChars(name: string): string | null {
         for (const char of name) {
-            if (INVALID_NAME_CHARS.has(char)) {
-                return formatMessage(MESSAGES[CURRENT_LANGUAGE].invalidCharacter, {
+            if (invalidNameCharsMap.has(char)) {
+                return formatMessage(messages[currentLanguage].invalidCharacter, {
                     name: name,
                     char: char
                 });

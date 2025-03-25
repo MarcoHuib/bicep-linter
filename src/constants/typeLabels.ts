@@ -1,7 +1,7 @@
 import { Language } from "../types/language";
 import { SectionType } from "../types/sectionType";
 
-export const TYPE_LABELS: Record<Language, Record<SectionType, string>> = {
+export const typeLabels: Record<Language, Record<SectionType, string>> = {
     [Language.NL]: {
         [SectionType.Param]: 'parameter',
         [SectionType.Var]: 'variabele',
